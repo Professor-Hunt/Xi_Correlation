@@ -1,0 +1,79 @@
+[
+  {
+    "relationship": "linear",
+    "cosine_mean": 0.9987447446179166,
+    "cosine_std": 5.2767229610439574e-05,
+    "xi_mean": 0.9462781851127404,
+    "xi_std": 0.0019478632275671747,
+    "pearson_mean": 0.9987459579337145,
+    "pearson_std": 5.193516254902369e-05,
+    "spearman_mean": 0.9983550142200569,
+    "spearman_std": 7.861371740367031e-05
+  },
+  {
+    "relationship": "quadratic",
+    "cosine_mean": 0.06093017046560793,
+    "cosine_std": 0.061898410745784685,
+    "xi_mean": 0.9880407521630087,
+    "xi_std": 1.0733169224657467e-05,
+    "pearson_mean": 0.06509416445412089,
+    "pearson_std": 0.07493023427030487,
+    "spearman_mean": 0.013213243252973012,
+    "spearman_std": 0.03223786375938539
+  },
+  {
+    "relationship": "cubic",
+    "cosine_mean": 0.7567366472894652,
+    "cosine_std": 0.04265563425789707,
+    "xi_mean": 0.994011976047904,
+    "xi_std": 1.2412670766236366e-16,
+    "pearson_mean": 0.757014922960737,
+    "pearson_std": 0.04261622066506898,
+    "spearman_mean": 1.0,
+    "spearman_std": 0.0
+  },
+  {
+    "relationship": "absolute",
+    "cosine_mean": 0.03643909332571499,
+    "cosine_std": 0.03669727800260463,
+    "xi_mean": 0.9880407521630087,
+    "xi_std": 1.0733169224657467e-05,
+    "pearson_mean": 0.043758817637347416,
+    "pearson_std": 0.05099400430986609,
+    "spearman_mean": 0.013213243252973012,
+    "spearman_std": 0.03223786375938539
+  },
+  {
+    "relationship": "sine",
+    "cosine_mean": -0.01593837878188212,
+    "cosine_std": 0.05298880586450876,
+    "xi_mean": 0.9314101256405024,
+    "xi_std": 0.0022829346232953384,
+    "pearson_mean": -0.01595451434679813,
+    "pearson_std": 0.05341343185901846,
+    "spearman_mean": -0.0037397141588566356,
+    "spearman_std": 0.05756639667390722
+  },
+  {
+    "relationship": "exponential",
+    "cosine_mean": 0.11123944220665478,
+    "cosine_std": 0.023787744988848603,
+    "xi_mean": 0.994011976047904,
+    "xi_std": 1.2412670766236366e-16,
+    "pearson_mean": 0.997344841119307,
+    "pearson_std": 0.00018074354673450064,
+    "spearman_mean": 1.0,
+    "spearman_std": 0.0
+  },
+  {
+    "relationship": "independent",
+    "cosine_mean": -0.047610475097023826,
+    "cosine_std": 0.032812667818157,
+    "xi_mean": -0.004814419257677049,
+    "xi_std": 0.04449308190992203,
+    "pearson_mean": -0.047238261379806745,
+    "pearson_std": 0.03252605347458609,
+    "spearman_mean": -0.05516669746678987,
+    "spearman_std": 0.027316024817300468
+  }
+]
