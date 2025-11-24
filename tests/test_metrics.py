@@ -73,7 +73,11 @@ class TestComputeAllSimilarities:
         assert 0 <= metrics['spearman_pvalue'] <= 1
 
     def test_on_perfect_correlation(self):
-        """Test metrics on perfectly correlated data."""
+        """Test metrics on perfectly correlated data.
+
+        Note: For small samples (n=5), xi ≈ 0.5 even for perfect correlation.
+        This is expected finite-sample behavior per Chatterjee (2021).
+        """
         x = np.array([1, 2, 3, 4, 5], dtype=float)
         y = 2 * x + 1
 
@@ -81,7 +85,8 @@ class TestComputeAllSimilarities:
 
         assert metrics['cosine'] > 0.99, "Cosine should be near 1"
         assert metrics['pearson'] > 0.99, "Pearson should be near 1"
-        assert metrics['xi'] > 0.95, "Xi should be high"
+        # For n=5, xi ≈ 0.5 is expected for perfect functional relationships
+        assert 0.4 <= metrics['xi'] <= 0.6, f"Xi should be ≈ 0.5 for n=5, got {metrics['xi']}"
 
 
 class TestComputeSimilarityMatrix:

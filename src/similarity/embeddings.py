@@ -8,6 +8,7 @@ import numpy as np
 from typing import List, Optional, Union
 from pathlib import Path
 import warnings
+import hashlib
 
 try:
     from sentence_transformers import SentenceTransformer
@@ -81,8 +82,10 @@ class EmbeddingModel:
                 ngram_range=(1, 2),
                 stop_words='english'
             )
+            self._vectorizer_fitted = False
             if self.model_name == 'lsa':
                 self.lsa = TruncatedSVD(n_components=100, random_state=42)
+                self._lsa_fitted = False
         else:
             if not SENTENCE_TRANSFORMERS_AVAILABLE:
                 raise ImportError("sentence-transformers required. Install with: pip install sentence-transformers")
@@ -127,9 +130,18 @@ class EmbeddingModel:
 
         if self.model_name in ['tfidf', 'lsa']:
             # TF-IDF or LSA
-            vectors = self.vectorizer.fit_transform(sentences).toarray()
+            if not self._vectorizer_fitted:
+                vectors = self.vectorizer.fit_transform(sentences).toarray()
+                self._vectorizer_fitted = True
+            else:
+                vectors = self.vectorizer.transform(sentences).toarray()
+
             if self.model_name == 'lsa':
-                vectors = self.lsa.fit_transform(vectors)
+                if not self._lsa_fitted:
+                    vectors = self.lsa.fit_transform(vectors)
+                    self._lsa_fitted = True
+                else:
+                    vectors = self.lsa.transform(vectors)
             return vectors
         else:
             # Sentence-BERT
@@ -229,10 +241,15 @@ class EmbeddingCache:
         self._cache = {}
 
     def _get_key(self, sentences: List[str], model_name: str) -> str:
-        """Generate cache key."""
-        # Use hash of sentences + model name
+        """
+        Generate deterministic cache key.
+
+        Uses SHA256 for consistent hashing across interpreter runs.
+        """
         sentences_str = "||".join(sentences)
-        return f"{model_name}::{hash(sentences_str)}"
+        content = f"{model_name}::{sentences_str}"
+        hash_digest = hashlib.sha256(content.encode('utf-8')).hexdigest()
+        return f"{model_name}::{hash_digest}"
 
     def get_or_compute(
         self,

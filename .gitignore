@@ -1,0 +1,39 @@
+# Claude Code IDE settings
+.claude/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Testing
+.pytest_cache/
+.benchmarks/
+.coverage
+htmlcov/
+*.cover
+
+# Virtual environments
+venv/
+env/
+ENV/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE settings
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/

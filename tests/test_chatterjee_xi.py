@@ -15,18 +15,27 @@ class TestChatterjeeXi:
     """Test cases for chatterjee_xi function."""
 
     def test_perfect_linear_relationship(self):
-        """Test xi on perfect linear relationship."""
+        """Test xi on perfect linear relationship.
+
+        Note: For small finite samples (n=5), xi does not approach 1.0 even for
+        perfect functional relationships. This is expected behavior per Chatterjee (2021).
+        """
         x = np.array([1, 2, 3, 4, 5], dtype=float)
         y = 2 * x + 1
         xi = chatterjee_xi(x, y)
-        assert xi >= 0.95, f"Expected xi >= 0.95 for linear relationship, got {xi}"
+        # For n=5 with perfect monotonic relationship, xi ≈ 0.5 is expected
+        assert 0.4 <= xi <= 0.6, f"Expected xi ≈ 0.5 for n=5 linear relationship, got {xi}"
 
     def test_perfect_monotonic_relationship(self):
-        """Test xi on perfect monotonic relationship."""
+        """Test xi on perfect monotonic relationship.
+
+        Note: For small finite samples (n=5), xi ≈ 0.5 is expected, not 1.0.
+        """
         x = np.array([1, 2, 3, 4, 5], dtype=float)
         y = x ** 2
         xi = chatterjee_xi(x, y)
-        assert xi >= 0.95, f"Expected xi >= 0.95 for monotonic relationship, got {xi}"
+        # For n=5 with perfect monotonic relationship, xi ≈ 0.5 is expected
+        assert 0.4 <= xi <= 0.6, f"Expected xi ≈ 0.5 for n=5 monotonic relationship, got {xi}"
 
     def test_independent_variables(self):
         """Test xi on independent variables."""
@@ -45,11 +54,15 @@ class TestChatterjeeXi:
         assert not np.isnan(xi), "Xi should not be NaN for constant arrays"
 
     def test_with_ties(self):
-        """Test xi with tied values."""
+        """Test xi with tied values.
+
+        Note: With ties and small sample size (n=5), xi is moderate, not high.
+        """
         x = np.array([1, 2, 2, 3, 4], dtype=float)
         y = np.array([1, 2, 2, 3, 4], dtype=float)
         xi = chatterjee_xi(x, y)
-        assert xi >= 0.8, "Xi should be high for nearly identical arrays with ties"
+        # For n=5 with ties, expect moderate xi value
+        assert 0.4 <= xi <= 0.7, f"Expected moderate xi for n=5 with ties, got {xi}"
 
     def test_input_validation(self):
         """Test input validation."""
@@ -69,7 +82,11 @@ class TestChatterjeeXi:
         assert isinstance(xi, float), "Should return float"
 
     def test_nonlinear_relationship(self):
-        """Test xi captures nonlinear relationships."""
+        """Test xi captures nonlinear relationships.
+
+        With larger samples (n=200), xi approaches high values for functional relationships,
+        as validated in the paper's synthetic experiments (xi > 0.93 for n=500).
+        """
         np.random.seed(42)
         x = np.random.randn(200)
         y_quad = x ** 2
@@ -78,9 +95,9 @@ class TestChatterjeeXi:
         xi_quad = chatterjee_xi(x, y_quad)
         xi_abs = chatterjee_xi(x, y_abs)
 
-        # Both should be high since they're functional relationships
-        assert xi_quad > 0.8, f"Xi should capture quadratic relationship, got {xi_quad}"
-        assert xi_abs > 0.8, f"Xi should capture absolute value relationship, got {xi_abs}"
+        # With n=200, expect high xi for functional relationships (validated in paper)
+        assert xi_quad > 0.9, f"Xi should capture quadratic relationship, got {xi_quad}"
+        assert xi_abs > 0.9, f"Xi should capture absolute value relationship, got {xi_abs}"
 
 
 class TestSymmetricXi:
@@ -101,11 +118,15 @@ class TestSymmetricXi:
         assert xi_sym == max(xi_xy, xi_yx)
 
     def test_symmetric_on_linear(self):
-        """Test symmetric xi on linear relationship."""
+        """Test symmetric xi on linear relationship.
+
+        Note: For small samples (n=5), symmetric_xi ≈ 0.5, not approaching 1.0.
+        """
         x = np.array([1, 2, 3, 4, 5], dtype=float)
         y = 2 * x
         xi_sym = symmetric_xi(x, y)
-        assert xi_sym >= 0.95
+        # For n=5, expect moderate value around 0.5
+        assert 0.4 <= xi_sym <= 0.6, f"Expected xi ≈ 0.5 for n=5, got {xi_sym}"
 
 
 class TestProjectionBasedXi:
@@ -175,7 +196,11 @@ class TestBatchChatterjeeXi:
     """Test cases for batch_chatterjee_xi function."""
 
     def test_batch_computation(self):
-        """Test batch computation of xi."""
+        """Test batch computation of xi.
+
+        Note: Diagonal elements represent xi(X[i], X[i]) which should be high
+        but not necessarily >= 0.99 for moderate-sized vectors (n=100).
+        """
         np.random.seed(42)
         X = np.random.randn(5, 100)
 
@@ -183,9 +208,10 @@ class TestBatchChatterjeeXi:
 
         assert xi_matrix.shape == (5, 5), "Matrix should be 5x5"
 
-        # Diagonal should be near 1 (or 0 depending on implementation)
+        # Diagonal should be high (a vector compared to itself)
+        # With n=100, expect values > 0.9 but allow for finite-sample variation
         for i in range(5):
-            assert xi_matrix[i, i] >= 0.99 or xi_matrix[i, i] <= 0.01
+            assert xi_matrix[i, i] >= 0.9, f"Diagonal xi[{i},{i}] should be high, got {xi_matrix[i, i]}"
 
     def test_batch_with_two_sets(self):
         """Test batch computation with two different sets."""

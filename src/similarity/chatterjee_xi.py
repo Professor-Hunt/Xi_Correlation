@@ -143,7 +143,8 @@ def projection_based_xi(
     n_projections : int, default=100
         Number of random projections to use
     random_state : int, optional
-        Random seed for reproducibility
+        Random seed for reproducibility. If None, results will differ between runs.
+        For reproducible results, always provide an explicit seed.
 
     Returns
     -------
@@ -168,7 +169,7 @@ def projection_based_xi(
     --------
     >>> X = np.random.randn(100, 384)  # 100 embeddings of dimension 384
     >>> Y = np.random.randn(100, 384)
-    >>> mean_xi, std_xi = projection_based_xi(X, Y, n_projections=50)
+    >>> mean_xi, std_xi = projection_based_xi(X, Y, n_projections=50, random_state=42)
     """
     if X.shape != Y.shape:
         raise ValueError(f"X and Y must have the same shape, got {X.shape} and {Y.shape}")
@@ -181,14 +182,14 @@ def projection_based_xi(
     if n_samples < 2:
         raise ValueError("Need at least 2 samples to compute correlation")
 
-    # Set random seed
-    rng = np.random.RandomState(random_state)
+    # Use modern numpy RNG
+    rng = np.random.default_rng(random_state)
 
     xi_values = []
 
     for _ in range(n_projections):
         # Draw random unit vector
-        w = rng.randn(n_features)
+        w = rng.standard_normal(n_features)
         w = w / np.linalg.norm(w)
 
         # Project embeddings
@@ -286,6 +287,17 @@ def batch_chatterjee_xi(X: np.ndarray, Y: np.ndarray = None) -> np.ndarray:
     Notes
     -----
     This is useful for computing similarity matrices for clustering or retrieval tasks.
+
+    Performance Warning:
+        This function has O(n*m) complexity where each call involves an O(d log d) sort
+        (d = n_features). For large datasets, this can be computationally expensive.
+        Consider using projection_based_xi for high-dimensional data or implementing
+        batching/parallelization for large-scale similarity computations.
+
+    Time complexity: O(n * m * d * log(d)) where:
+        - n = number of vectors in X
+        - m = number of vectors in Y (or n if Y is None)
+        - d = n_features
 
     Examples
     --------
