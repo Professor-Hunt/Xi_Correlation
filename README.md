@@ -20,8 +20,8 @@ This repository provides a complete implementation of applying Chatterjee's rank
 ### Installation
 
 ```bash
-git clone https://github.com/Professor-Hunt/Vector_Correlation.git
-cd Vector_Correlation
+git clone https://github.com/Professor-Hunt/Xi_Correlation.git
+cd Xi_Correlation
 pip install -e .
 ```
 
@@ -94,7 +94,7 @@ Chatterjee's ξ is a **rank-based correlation coefficient** that detects both li
 ## 📂 Repository Structure
 
 ```
-Vector_Correlation/
+Xi_Correlation/
 ├── src/                    # Core implementation
 │   ├── similarity/         # Similarity metrics
 │   ├── experiments/        # Experiment modules
@@ -209,7 +209,7 @@ If you use this code in your research, please cite:
 ```bibtex
 @article{hunt2025chatterjee,
   title={Beyond Cosine: A Rank-Based Measure of Semantic Similarity Using Chatterjee's Xi},
-  author={Hunt, Professor},
+  author={Hunt, Joshua O.S. and Hunt, Emily J. and Neupane, Prashant},
   journal={arXiv preprint},
   year={2025}
 }
@@ -245,9 +245,9 @@ This project is licensed under the MIT License - see [LICENSE](LICENSE) for deta
 
 ## 📞 Contact
 
-**Professor Hunt**
+**Joshua O.S. Hunt, Emily J. Hunt, Prashant Neupane**
 - GitHub: [@Professor-Hunt](https://github.com/Professor-Hunt)
-- Repository: [Vector_Correlation](https://github.com/Professor-Hunt/Vector_Correlation)
+- Repository: [Xi_Correlation](https://github.com/Professor-Hunt/Xi_Correlation)
 
 ---
 
