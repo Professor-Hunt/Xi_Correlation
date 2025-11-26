@@ -7,7 +7,6 @@ rank-based correlation methods as an alternative to cosine similarity.
 """
 
 __version__ = "1.0.0"
-__author__ = "Joshua O.S. Hunt, Emily J. Hunt, Prashant Neupane"
 
 from .similarity.chatterjee_xi import chatterjee_xi, symmetric_xi
 from .similarity.metrics import compute_all_similarities, cosine_similarity_score

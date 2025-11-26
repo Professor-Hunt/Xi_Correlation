@@ -6,7 +6,7 @@
 \onehalfspacing
 \usepackage{graphicx}
 \usepackage{booktabs}
-\usepackage{tabularx} 
+\usepackage{tabularx}
 \usepackage{amsmath}
 
 % Fix unicode and encoding issues
@@ -35,12 +35,7 @@
 \DeclareUnicodeCharacter{3011}{]}
 
 \title{Beyond Cosine: A Rank--Based Measure of Semantic Similarity Using Chatterjee's \texorpdfstring{$\xi$}{xi}}
-\author{Joshua O.S. Hunt\thanks{Corresponding author. Email: johunt@latech.edu} \\
-\small Louisiana Tech University \\[0.5em]
-Emily J. Hunt \\
-\small Louisiana Tech University \\[0.5em]
-Prashant Neupane \\
-\small Louisiana Tech University}
+\author{Anonymous}
 \date{}
 
 \begin{document}
@@ -139,7 +134,7 @@ For scenarios with multiple stochastic observations per concept, we define a pro
 
 \section{Experiments}
 
-We performed a comprehensive series of experiments to validate dimensionwise $\xi$ and compare it with cosine similarity.  All code, data, and experimental scripts are provided in the accompanying repository\footnote{Available at \url{https://github.com/Professor-Hunt/Vector\_Correlation}} with full reproducibility instructions.  Below we present the key findings, leading with benchmark validation on 1{,}500 STS-B pairs.
+We performed a comprehensive series of experiments to validate dimensionwise $\xi$ and compare it with cosine similarity.  All code, data, and experimental scripts are provided in the accompanying supplementary materials with full reproducibility instructions.  Below we present the key findings, leading with benchmark validation on 1{,}500 STS-B pairs.
 
 \subsection{STS-B benchmark validation}
 
@@ -599,11 +594,11 @@ These methods measure fundamentally different quantities (mean $|\Delta|=0.236$)
 
 \subsection{Closing Remarks}
 
-This work demonstrates that empirical validity and theoretical purity can diverge in machine learning applications. Dimensionwise $\xi$, while theoretically unconventional, achieves validated performance through a discoverable mechanism (distributed aggregation of rank signals). By empirically validating the method, explaining its mechanism, and grounding it theoretically through synthetic experiments and projection-based formulation, we provide both a practical tool for practitioners and new insights into how BERT embeddings encode semantic similarity. The finding that rank structure captures 99\% of semantic signal suggests semantic similarity is fundamentally an ordinal phenomenon, with magnitude playing a secondary role. All code, data, and experimental results are publicly available to facilitate reproduction and extension of this work.
+This work demonstrates that empirical validity and theoretical purity can diverge in machine learning applications. Dimensionwise $\xi$, while theoretically unconventional, achieves validated performance through a discoverable mechanism (distributed aggregation of rank signals). By empirically validating the method, explaining its mechanism, and grounding it theoretically through synthetic experiments and projection-based formulation, we provide both a practical tool for practitioners and new insights into how BERT embeddings encode semantic similarity. The finding that rank structure captures 99\% of semantic signal suggests semantic similarity is fundamentally an ordinal phenomenon, with magnitude playing a secondary role. All code, data, and experimental results are available in the supplementary materials to facilitate reproduction and extension of this work.
 
 \section*{Data Availability}
 
-All experimental code, data, and analysis scripts are publicly available at \url{https://github.com/Professor-Hunt/Xi_Correlation}.  The repository includes:
+All experimental code, data, and analysis scripts are included in the supplementary materials.  The repository includes:
 \begin{itemize}
   \item Complete source code for all similarity metrics
   \item Experiment scripts with reproducible configurations
@@ -613,10 +608,6 @@ All experimental code, data, and analysis scripts are publicly available at \url
   \item Comprehensive documentation and installation instructions
 \end{itemize}
 Results are fully reproducible using the provided scripts with fixed random seeds.
-
-\section*{Acknowledgements}
-
-We thank Sourav Chatterjee for introducing the $\xi$ correlation coefficient and making its mathematical properties accessible.  We also acknowledge the sentence-transformers team for excellent embedding models.  All experiments were conducted using open-source software and publicly available computational resources.
 
 \section*{Disclosure Statement}
 
