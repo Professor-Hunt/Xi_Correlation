@@ -216,7 +216,7 @@ def generate_paper_tables(synthetic_results, benchmark_results, rag_results):
 
 def main():
     parser = argparse.ArgumentParser(
-        description='Run all experiments for Vector Correlation research project'
+        description='Run all experiments for Xi Correlation research project'
     )
 
     parser.add_argument(
@@ -263,7 +263,7 @@ def main():
 
     args = parser.parse_args()
 
-    print("Vector Correlation Research Project")
+    print("Xi Correlation Research Project")
     print("Experiment Runner")
     print("="*80)
 

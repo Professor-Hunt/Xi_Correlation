@@ -48,4 +48,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-For detailed changes, see the [commit history](https://github.com/Professor-Hunt/Vector_Correlation/commits/main).
+For detailed changes, see the [commit history](https://github.com/Professor-Hunt/Xi_Correlation/commits/main).

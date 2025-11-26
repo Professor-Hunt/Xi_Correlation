@@ -1,4 +1,4 @@
-# Contributing to Vector Correlation
+# Contributing to Xi Correlation
 
 Thank you for your interest in contributing! This document provides guidelines for contributing to the project.
 
@@ -7,8 +7,8 @@ Thank you for your interest in contributing! This document provides guidelines f
 1. **Fork the repository** on GitHub
 2. **Clone your fork** locally:
    ```bash
-   git clone https://github.com/YOUR-USERNAME/Vector_Correlation.git
-   cd Vector_Correlation
+   git clone https://github.com/YOUR-USERNAME/Xi_Correlation.git
+   cd Xi_Correlation
    ```
 3. **Install in development mode**:
    ```bash
@@ -195,8 +195,8 @@ Include:
 
 ## Questions?
 
-- **Issues**: https://github.com/Professor-Hunt/Vector_Correlation/issues
-- **Discussions**: https://github.com/Professor-Hunt/Vector_Correlation/discussions
+- **Issues**: https://github.com/Professor-Hunt/Xi_Correlation/issues
+- **Discussions**: https://github.com/Professor-Hunt/Xi_Correlation/discussions
 
 ## Code of Conduct
 

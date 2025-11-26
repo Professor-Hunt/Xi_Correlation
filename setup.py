@@ -1,4 +1,4 @@
-"""Setup script for Vector Correlation package."""
+"""Setup script for Xi Correlation package."""
 
 from setuptools import setup, find_packages
 from pathlib import Path
@@ -17,14 +17,14 @@ if requirements_file.exists():
         requirements = [line.strip() for line in f if line.strip() and not line.startswith('#')]
 
 setup(
-    name="vector-correlation",
+    name="xi-correlation",
     version="1.0.0",
-    author="Professor Hunt",
+    author="Joshua O.S. Hunt, Emily J. Hunt, Prashant Neupane",
     author_email="",
     description="A research project on semantic similarity using Chatterjee's Xi correlation coefficient",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/Professor-Hunt/Vector_Correlation",
+    url="https://github.com/Professor-Hunt/Xi_Correlation",
     packages=find_packages(),
     classifiers=[
         "Development Status :: 4 - Beta",
@@ -55,7 +55,7 @@ setup(
     },
     entry_points={
         "console_scripts": [
-            "vector-correlation=experiments.run_all_experiments:main",
+            "xi-correlation=experiments.run_all_experiments:main",
         ],
     },
     include_package_data=True,

@@ -5,8 +5,8 @@ Get started with Chatterjee's Xi for semantic similarity in 5 minutes.
 ## Installation
 
 ```bash
-git clone https://github.com/Professor-Hunt/Vector_Correlation.git
-cd Vector_Correlation
+git clone https://github.com/Professor-Hunt/Xi_Correlation.git
+cd Xi_Correlation
 pip install -e .
 ```
 
@@ -161,6 +161,6 @@ for i in range(0, len(sentences), batch_size):
 
 ## Getting Help
 
-- **Issues**: https://github.com/Professor-Hunt/Vector_Correlation/issues
-- **Discussions**: https://github.com/Professor-Hunt/Vector_Correlation/discussions
+- **Issues**: https://github.com/Professor-Hunt/Xi_Correlation/issues
+- **Discussions**: https://github.com/Professor-Hunt/Xi_Correlation/discussions
 - **Paper**: See `paper/semantic_similarity_paper.tex` for detailed explanations

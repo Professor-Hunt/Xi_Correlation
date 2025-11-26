@@ -1,1 +1,1 @@
-"""Unit tests for Vector Correlation project."""
+"""Unit tests for Xi Correlation project."""
