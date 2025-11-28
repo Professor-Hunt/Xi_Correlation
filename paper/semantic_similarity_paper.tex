@@ -3,7 +3,7 @@
 \usepackage{amsfonts}
 \usepackage[margin=1in]{geometry}
 \usepackage{setspace}
-\onehalfspacing
+\doublespacing
 \usepackage{graphicx}
 \usepackage{booktabs}
 \usepackage{tabularx} 
@@ -14,6 +14,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage{textcomp}
 \usepackage{url}
+\usepackage{chicago}  % ASA style: Author (Year) citations
 
 % Graphics path to avoid ../figures/ issues
 \graphicspath{{../figures/}}
@@ -504,7 +505,7 @@ The authors report there are no competing interests to declare.
 
 In accordance with Taylor \& Francis policy, we disclose the use of generative AI in manuscript preparation. Claude (Anthropic, claude-sonnet-4-5-20250929) was used to assist with editing prose, improving clarity of presentation, LaTeX formatting, and Python code refinement. All technical content, experimental design, data analysis, and scientific conclusions are the sole work of the authors. The authors reviewed and take full responsibility for the content of this manuscript.
 
-\bibliographystyle{plain}
+\bibliographystyle{chicago}
 \bibliography{references}
 
 \end{document}
